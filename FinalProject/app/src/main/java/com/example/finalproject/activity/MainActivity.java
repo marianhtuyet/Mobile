@@ -1,5 +1,6 @@
 package com.example.finalproject.activity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,6 +15,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -32,6 +35,7 @@ import com.example.finalproject.R;
 import com.example.finalproject.adapter.CategoryAdapter;
 import com.example.finalproject.adapter.ProductAdapter;
 import com.example.finalproject.model.Category;
+import com.example.finalproject.model.GioHang;
 import com.example.finalproject.model.Product;
 import com.example.finalproject.ultil.CheckInternetCnn;
 import com.example.finalproject.ultil.Server;
@@ -68,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
     String description = "";
     int id_category = 0;
 
+    public static ArrayList<GioHang> mangGioHang;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +89,24 @@ public class MainActivity extends AppCompatActivity {
             CheckInternetCnn.NotificationCnn(getApplicationContext(),"No Internet Connection");
         }
 
+    }
+
+    @Override//Tao menu
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+    //bat su kien item menu
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuGioHang:
+                Intent intent = new Intent(getApplicationContext(), com.example.finalproject.activity.GioHang.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void CatchOnItemListView() {
@@ -264,5 +288,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);//chia thanh 2 cot
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
         recyclerView.setAdapter(productAdapter);
+
+        if(mangGioHang!=null){
+
+        }else{
+            mangGioHang = new ArrayList<>();
+        }
     }
 }

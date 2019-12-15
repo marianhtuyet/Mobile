@@ -1,6 +1,8 @@
 package com.example.finalproject.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.R;
+import com.example.finalproject.activity.ChiTietSanPham;
 import com.example.finalproject.model.Product;
 import com.squareup.picasso.Picasso;
 
@@ -37,10 +40,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ItemHold
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         Product product = productArr.get(position);
         holder.textViewName.setText(product.getName());
-        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.textViewPrice.setText("Giá: "+decimalFormat.format(product.getPrice())+"đ");
+        if (product.getDiscount()>0){
+            int giaMoi = product.getPrice()- (product.getPrice()*product.getDiscount())/100;
+            holder.textViewOldPrice.setPaintFlags(holder.textViewOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.textViewOldPrice.setText("Giá cũ: "+decimalFormat.format(product.getPrice())+"đ");
+            holder.textViewPrice.setText("Giá: "+decimalFormat.format(giaMoi)+"đ");
+        }else {
+            holder.textViewOldPrice.setVisibility(View.INVISIBLE);
+            holder.textViewPrice.setText("Giá: "+decimalFormat.format(product.getPrice())+"đ");
+        }
         Picasso.with(context).load(product.getImage()).into(holder.imageViewProduct);
     }
 
@@ -51,13 +62,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ItemHold
 
     public class ItemHolder extends RecyclerView.ViewHolder{
         public ImageView imageViewProduct;
-        public TextView textViewName, textViewPrice;
+        public TextView textViewName, textViewPrice, textViewOldPrice;
 
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
             imageViewProduct = (ImageView)itemView.findViewById(R.id.imageview_product);
             textViewName = (TextView) itemView.findViewById(R.id.textview_productname);
             textViewPrice = (TextView) itemView.findViewById(R.id.textview_productprice);
+            textViewOldPrice = (TextView) itemView.findViewById(R.id.textview_oldproductprice);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(context, ChiTietSanPham.class);
+                    intent.putExtra("thongtinsanpham",productArr.get(getPosition()));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//de co the start activity
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

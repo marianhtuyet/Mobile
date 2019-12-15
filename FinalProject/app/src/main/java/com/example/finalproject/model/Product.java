@@ -1,6 +1,8 @@
 package com.example.finalproject.model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable { //implement de co the truyen object giua cac acivity
     public int id;
     public String name;
     public int price;
