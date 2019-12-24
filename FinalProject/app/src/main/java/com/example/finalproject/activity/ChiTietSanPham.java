@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.example.finalproject.R;
 import com.example.finalproject.model.GioHang;
 import com.example.finalproject.model.Product;
+import com.example.finalproject.ultil.CheckInternetCnn;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -96,8 +97,7 @@ public class ChiTietSanPham extends AppCompatActivity {
                     int giaMoi = soluong*giaChiTiet;
                     MainActivity.mangGioHang.add(new GioHang(id,tenChiTiet,giaMoi,anhChiTiet,soluong));
                 }
-                Intent intent= new Intent(getApplicationContext(), com.example.finalproject.activity.GioHang.class);
-                startActivity(intent);
+                CheckInternetCnn.NotificationCnn(getApplicationContext(),"Đã thêm vào giỏ hàng");
             }
         });
     }

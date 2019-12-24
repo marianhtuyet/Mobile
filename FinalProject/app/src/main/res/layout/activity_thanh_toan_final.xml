@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="10pt"
+                android:textSize="8pt"
                 android:text="Tên người nhận"></TextView>
         </LinearLayout>
 
@@ -60,7 +60,7 @@
             android:orientation="vertical">
             <TextView
                 android:layout_width="140dp"
-                android:textSize="10pt"
+                android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:text="Số điện thoại"
                 android:textAlignment="textStart"
@@ -93,7 +93,7 @@
             android:orientation="vertical">
             <TextView
                 android:layout_width="140dp"
-                android:textSize="10pt"
+                android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:text="Địa chỉ người nhận:"
                 android:textAlignment="textStart"

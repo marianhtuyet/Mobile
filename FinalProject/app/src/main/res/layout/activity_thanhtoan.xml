@@ -34,7 +34,7 @@
                 android:id="@+id/tv_nguoinhan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="10pt"
+                android:textSize="8pt"
                 android:text="Tên người nhận"></TextView>
         </LinearLayout>
 
@@ -63,7 +63,7 @@
             <TextView
                 android:id="@+id/tv_dienthoai"
                 android:layout_width="140dp"
-                android:textSize="10pt"
+                android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:text="Số điện thoại"
                 android:textAlignment="textStart"
@@ -96,7 +96,7 @@
             <TextView
                 android:id="@+id/tv_diachi"
                 android:layout_width="140dp"
-                android:textSize="10pt"
+                android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:text="Địa chỉ người nhận:"
                 android:textAlignment="textStart"
