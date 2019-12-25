@@ -18,8 +18,6 @@
         <activity android:name=".activity.GioHang" />
         <activity android:name=".activity.ChiTietSanPham" />
         <activity android:name=".activity.LienHeActivity" />
-        <activity android:name=".activity.GiayNam" />
-        <activity android:name=".activity.QuanNamActivity" />
         <activity android:name=".activity.SoMiNamActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>

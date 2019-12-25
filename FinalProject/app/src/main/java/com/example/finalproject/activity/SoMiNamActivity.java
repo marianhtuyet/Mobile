@@ -73,7 +73,6 @@ public class SoMiNamActivity extends AppCompatActivity {
     }
     //bat su kien item menu
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){

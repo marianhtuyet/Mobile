@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:background="#716562"
         app:titleTextColor="#f9f6f5"
-        app:title="Áo sơ mi nam"
+        app:title="Danh sách sản phẩm"
         android:id="@+id/toolbar_soMiNam"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
