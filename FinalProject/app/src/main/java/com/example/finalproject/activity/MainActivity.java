@@ -29,6 +29,7 @@ import android.widget.ViewFlipper;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.TimeoutError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.finalproject.R;
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override//Tao menu
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.client,menu);
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
     }
@@ -104,7 +106,10 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menuGioHang:
                 Intent intent = new Intent(getApplicationContext(), com.example.finalproject.activity.GioHang.class);
-                startActivity(intent);
+                startActivity(intent);break;
+            case R.id.client:
+                Intent intent1=new Intent(getApplicationContext(),com.example.finalproject.activity.KhachHang.class);
+                startActivity(intent1);break;
         }
         return super.onOptionsItemSelected(item);
     }
