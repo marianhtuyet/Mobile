@@ -1,20 +1,16 @@
 package com.example.finalproject.activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.appcompat.widget.ToolbarWidgetWrapper;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -307,6 +303,7 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onResponse(JSONArray response) {
                 if(response != null){
+                    Log.d("dcm","dcm");
                     for (int i=0;i<response.length();i++){
                         try {
                             JSONObject jsonObject = response.getJSONObject(i);

@@ -11,4 +11,5 @@ public class Server {
     public static String urlCustomerAddress = "http://"+localhost+":8080/server/getCustomerAddress.php?_ijt=os3oq3803hq4is5kscvja72pal";
     public static String urlInsertHoaDon ="http://"+localhost+":8080/server/insertHoaDon.php";
     public static String urlInsertCTHD="http://"+localhost+":8080/server/insertCTHD.php";
+    public static String urlComment="http://"+ localhost+":8080/server/getComment.php?masp=";
 }
