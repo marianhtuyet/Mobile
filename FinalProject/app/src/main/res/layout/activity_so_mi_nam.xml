@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.SoMiNamActivity">
     <androidx.appcompat.widget.Toolbar
-        android:background="#716562"
+        android:background="#4665ce"
         app:titleTextColor="#f9f6f5"
         app:title="Danh sách sản phẩm"
         android:id="@+id/toolbar_soMiNam"
