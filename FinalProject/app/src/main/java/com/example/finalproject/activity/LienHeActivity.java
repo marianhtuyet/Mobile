@@ -44,8 +44,6 @@ public class LienHeActivity extends AppCompatActivity implements OnMapReadyCallb
                 finish();
             }
         });
-
-
     }
 
 
