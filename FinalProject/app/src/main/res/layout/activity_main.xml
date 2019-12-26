@@ -15,7 +15,7 @@
             android:layout_height="match_parent">
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_mainScreen"
-                android:background="#4665ce"
+                android:background="#718EF5"
                 app:title="Trang chủ"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize">
