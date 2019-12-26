@@ -119,6 +119,18 @@ public class MainActivity extends AppCompatActivity{
                 return false;
             }
         });
+
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener()
+        {
+            @Override
+            public void onFocusChange(View v, boolean newViewFocus)
+            {
+                if (!newViewFocus)
+                {
+                    searchAdapter.filter("");
+                }
+            }
+        });
         return true;
     }
     //bat su kien item menu
