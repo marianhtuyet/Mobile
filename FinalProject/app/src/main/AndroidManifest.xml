@@ -38,7 +38,9 @@
         <activity android:name=".activity.ChiTietSanPham" />
         <activity android:name=".activity.LienHeActivity" />
         <activity android:name=".activity.SoMiNamActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

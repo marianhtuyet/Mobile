@@ -109,7 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.d(TAG, response);
+                            Log.d("hehe", email);
                             String message = "";
                             try {
                                 if(response.trim().equals("success")){

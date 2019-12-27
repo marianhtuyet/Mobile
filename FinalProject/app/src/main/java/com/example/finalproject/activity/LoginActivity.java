@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if(response.trim().equals("success")){
 
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
 //                                    MainActivity tempActivity = new MainActivity();
 //                                    tempActivity.refreshNBName();
