@@ -13,11 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -54,9 +56,10 @@ public class ChiTietSanPham extends AppCompatActivity {
     ListView lvComment;
     ArrayList<Comment> commentList;
     CommentAdapter commentAdapter;
+    EditText editTextComment;
 
     Spinner spinner;
-    Button btnDatMua;
+    Button btnDatMua, btnComment;
 
 
     int id = 0;
@@ -69,6 +72,7 @@ public class ChiTietSanPham extends AppCompatActivity {
 
     String username ="";
     String content ="";
+    String newContent ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +84,7 @@ public class ChiTietSanPham extends AppCompatActivity {
         catchEventSpinner();
         eventButton();
         getComment();
+
     }
 
     private void getComment() {
@@ -166,6 +171,49 @@ public class ChiTietSanPham extends AppCompatActivity {
                 CheckInternetCnn.NotificationCnn(getApplicationContext(),"Đã thêm vào giỏ hàng");
             }
         });
+
+
+        btnComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newContent =editTextComment.getText().toString().trim();
+                Log.d("mmm",newContent+"mmm");
+                if(newContent.length()>0){
+                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());//ddối tượng để gửi các request lên server
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.urlAddComment, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) { // Hứng dữ liệu trả về
+                            Log.d("repon",response+"");
+                            if(response.equals("1")){
+                                commentList.add(new Comment("Doan",newContent));
+                                commentAdapter.notifyDataSetChanged();
+                                CheckInternetCnn.NotificationCnn(getApplicationContext(),"Đã thêm");
+                            }else { //khi het du lieu de load
+                                CheckInternetCnn.NotificationCnn(getApplicationContext(),"That bai");
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    }){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError { //Gửi dữ liệu leen server dạng hashmap
+                            HashMap<String,String> param = new HashMap<String,String>();
+                            param.put("makh","2");
+                            param.put("masp","1");
+                            param.put("content",newContent);
+                            return param;
+                        }
+                    };
+                    requestQueue.add(stringRequest);
+                }else {
+                    CheckInternetCnn.NotificationCnn(getApplicationContext(),"Vui lòng nhập thông tin");
+                }
+            }
+        });
     }
 
     private void catchEventSpinner() {
@@ -227,7 +275,9 @@ public class ChiTietSanPham extends AppCompatActivity {
         //tvGia.setPaintFlags(tvGia.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         tvMoTa = (TextView) findViewById(R.id.textview_MoTaChiTietSQP);
         btnDatMua = (Button)findViewById(R.id.button_DatMua);
+        btnComment = (Button)findViewById(R.id.btn_comment);
         spinner = (Spinner)findViewById(R.id.spinner);
+        editTextComment = (EditText)findViewById(R.id.editText_comment);
 
         lvComment = (ListView) findViewById(R.id.listview_comment);
         commentList = new ArrayList<>();
