@@ -1,15 +1,10 @@
 <?php
 include "connect.php";
-$page = $_GET['page'];
-$idCategory = $_POST['idcategory'];
-$space = 4;
-$limit = ($page - 1)*$space;
-$productArr = array();
-
-$query = "SELECT * FROM product WHERE Id_Category = $idCategory LIMIT $limit,$space";
+$query = "SELECT * FROM product";
 $data = mysqli_query($conn,$query);
+$newProductArr = array();
 while ($row = mysqli_fetch_assoc($data)){
-    array_push($productArr,new Product(
+    array_push($newProductArr,new NewProduct(
         $row['Id'],
         $row['Name'],
         $row['Price'],
@@ -19,10 +14,10 @@ while ($row = mysqli_fetch_assoc($data)){
         $row['Id_Category']
     ));
 }
-echo json_encode($productArr);
+echo json_encode($newProductArr);
 
-class Product{
-    function Product($id,$name,$price,$discount,$image,$description,$idCategory){
+class NewProduct{
+    function NewProduct($id,$name,$price,$discount,$image,$description,$idCategory){
         $this->id = $id;
         $this->name = $name;
         $this->price = $price;

@@ -20,4 +20,12 @@
     <string name="register_phone">Số điện thoại</string>
 
     <string name="change_info_btn">Thay đổi thông tin</string>
+
+    <string name="change_confirm_pass">Xác nhận mật khẩu</string>
+
+    <string name="change_new_pass">Mật khẩu mới</string>
+
+    <string name="change_old_pass">Mật khẩu cũ</string>
+
+    <string name="btn_confirm">Lưu thay đổi</string>
 </resources>

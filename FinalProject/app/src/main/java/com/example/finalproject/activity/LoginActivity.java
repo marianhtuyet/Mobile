@@ -24,6 +24,7 @@ import com.example.finalproject.R;
 import com.example.finalproject.model.User;
 import com.example.finalproject.ultil.Server;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtPassWord;
     private Button btnLogin;
     private Button btnRegister;
+    private Button btnChangePassword;
     private ProgressDialog pDialog;
     /**
      * URL : URL_LOGIN
@@ -72,6 +74,14 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(),ChangePassword.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void addControl() {
@@ -79,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         edtPassWord = (EditText) findViewById(R.id.editPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnChangePassword = findViewById(R.id.btnChangeInfo);
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Đang đăng nhập...");
         pDialog.setCanceledOnTouchOutside(false);
@@ -97,13 +108,27 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, response);
                             String message = "";
                             try {
-                                if(response.trim().equals("success")){
-
+                                if(!response.trim().equals("error")){
+                                    JSONArray jsonArray = new JSONArray(response);
+                                    for (int j = 0; j < jsonArray.length(); j++) {
+                                        try {
+                                            JSONObject jsonObject = jsonArray.getJSONObject(j);
+                                            String tenkh = jsonObject.getString("tenkh");
+                                            int makh = jsonObject.getInt("makh");
+                                            String email = jsonObject.getString("email");
+                                            SharedPreferences sharedPref = getSharedPreferences("MyReferences", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPref.edit();
+                                            editor.putString("tenkh", tenkh);
+                                            editor.putInt("makh", makh);
+                                            editor.putString("email", email);
+                                            editor.apply();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
-//                                    MainActivity tempActivity = new MainActivity();
-//                                    tempActivity.refreshNBName();
                                 }
                                 else {
                                     Toast.makeText(LoginActivity.this, "Sai thông tin đăng nhập", Toast.LENGTH_SHORT).show();

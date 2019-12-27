@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
@@ -73,6 +75,9 @@ public class ChiTietSanPham extends AppCompatActivity {
     String username ="";
     String content ="";
     String newContent ="";
+
+    Integer makh = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,8 +207,8 @@ public class ChiTietSanPham extends AppCompatActivity {
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError { //Gửi dữ liệu leen server dạng hashmap
                             HashMap<String,String> param = new HashMap<String,String>();
-                            param.put("makh","2");
-                            param.put("masp","1");
+                            param.put("makh",String.valueOf(makh));
+                            param.put("masp",String.valueOf(id));
                             param.put("content",newContent);
                             return param;
                         }
@@ -283,5 +288,8 @@ public class ChiTietSanPham extends AppCompatActivity {
         commentList = new ArrayList<>();
         commentAdapter = new CommentAdapter(commentList,getApplicationContext());
         lvComment.setAdapter(commentAdapter);
+
+        SharedPreferences sharedPref = getSharedPreferences("MyReferences", Context.MODE_PRIVATE);
+         makh = sharedPref.getInt("makh",1);
     }
 }

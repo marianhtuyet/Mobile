@@ -214,6 +214,9 @@ public class KhachHang extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(adapter);
+
+        SharedPreferences sharedPref = getSharedPreferences("MyReferences",Context.MODE_PRIVATE);
+        makh = sharedPref.getInt("makh",1);
     }
 
     private void getBillList(){

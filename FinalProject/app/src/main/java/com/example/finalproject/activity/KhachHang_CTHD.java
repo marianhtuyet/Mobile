@@ -35,7 +35,7 @@ public class KhachHang_CTHD extends AppCompatActivity {
     Toolbar toolbarChiTiet;
     TextView tv_tongtien;
     String mahd;
-    int masp=0,price=0,soluong=0;
+    int masp=0,price=0,discount =0 ,soluong=0;
     String name="";
     String image="";
     boolean limitData=false;
@@ -78,9 +78,10 @@ public class KhachHang_CTHD extends AppCompatActivity {
                                 masp=jsonObject.getInt("masp");
                                 name=jsonObject.getString("Name");
                                 price=jsonObject.getInt("Price");
+                                discount=jsonObject.getInt("Discount");
                                 image=jsonObject.getString("Image");
                                 soluong=jsonObject.getInt("soluong");
-                                mangCTHD.add(new CTHD(masp,price,name,soluong,image));
+                                mangCTHD.add(new CTHD(masp,price,discount,name,soluong,image));
                                 adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
                                 e.printStackTrace();

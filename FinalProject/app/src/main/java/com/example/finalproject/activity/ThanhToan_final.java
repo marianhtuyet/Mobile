@@ -2,6 +2,8 @@ package com.example.finalproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
@@ -186,6 +188,9 @@ public class ThanhToan_final extends AppCompatActivity {
         btQuayLai = findViewById(R.id.bt_quaylaifn);
         gioHangAdapter = new GioHang_ThanhToanAdapter(ThanhToan_final.this,MainActivity.mangGioHang);
         lvGioHang.setAdapter(gioHangAdapter);
+
+        SharedPreferences sharedPref = getSharedPreferences("MyReferences", Context.MODE_PRIVATE);
+        makh = sharedPref.getInt("makh",1);
     }
 
 //    private  void TruyenDuLieu(){

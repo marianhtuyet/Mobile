@@ -68,7 +68,7 @@ public class CTHD_ClientAdapter extends BaseAdapter {
         CTHD cthd= (CTHD)getItem(position);
         viewHolder.tvTenGioHang.setText(cthd.getName());
         DecimalFormat decimalFormat =  new DecimalFormat("###,###,###");
-        viewHolder.tvGiaGioHang.setText(decimalFormat.format(cthd.getPrice())+" Đ");
+        viewHolder.tvGiaGioHang.setText(decimalFormat.format(cthd.getPrice()-(cthd.getPrice()*cthd.getDiscount()/100))+" Đ");
         Picasso.with(context).load(cthd.getImage()).into(viewHolder.imgTenGioHang);
         viewHolder.btnValue.setText(cthd.getSoluong() + "");
         viewHolder.btnMinius.setVisibility(View.INVISIBLE);

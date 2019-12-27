@@ -68,6 +68,9 @@ public class ThanhToan extends AppCompatActivity {
         tvDiaChi=findViewById(R.id.et_diachi);
         bt_tieptuc=findViewById(R.id.bt_tieptuc);
         bt_quaylai=findViewById(R.id.bt_quaylai);
+
+        SharedPreferences sharedPref = getSharedPreferences("MyReferences",Context.MODE_PRIVATE);
+        makh = sharedPref.getInt("makh",1);
     }
 //    private static void TruyenDuLieu1(){
 //        if(ThanhToan_final.tvTenNguoiNhan.getText()!=null)
