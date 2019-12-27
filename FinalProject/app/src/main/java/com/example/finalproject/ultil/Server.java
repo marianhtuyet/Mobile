@@ -13,4 +13,7 @@ public class Server {
     public static String urlInsertCTHD="http://"+localhost+":8080/server/insertCTHD.php";
     public static String urlComment="http://"+ localhost+":8080/server/getComment.php?masp=";
     public static String urlAddComment="http://"+localhost+":8080/server/insertComment.php?";
+    public static String urlUser="http://"+localhost+":8080/server/insertCTHD.php";
+    public static String  REGISTER_URL ="http://"+localhost+":8080/server/register.php";
+    public static String URL_LOGIN = "http://"+localhost+":8080/server/login.php";
 }
