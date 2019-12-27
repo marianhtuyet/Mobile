@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity{
     @Override//Tao menu
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.client,menu);
 
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -137,6 +138,11 @@ public class MainActivity extends AppCompatActivity{
             case R.id.menuGioHang:
                 Intent intent = new Intent(getApplicationContext(), com.example.finalproject.activity.GioHang.class);
                 startActivity(intent);
+                break;
+            case R.id.client:
+                Intent intent1=new Intent(getApplicationContext(),com.example.finalproject.activity.KhachHang.class);
+                startActivity(intent1);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

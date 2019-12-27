@@ -16,4 +16,7 @@ public class Server {
     public static String urlUser="http://"+localhost+":8080/server/insertCTHD.php";
     public static String  REGISTER_URL ="http://"+localhost+":8080/server/register.php";
     public static String URL_LOGIN = "http://"+localhost+":8080/server/login.php";
+    public static String urlBillList="http://"+localhost+":8080/server/getBillList.php";
+    public static String urlInsertKH="http://"+localhost+":8080/server/insertKH.php";
+    public static String urlCTHDClient="http://"+localhost+":8080/server/getCTHD_Client.php";
 }

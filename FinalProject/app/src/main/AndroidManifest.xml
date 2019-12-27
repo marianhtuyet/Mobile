@@ -35,6 +35,8 @@
         <activity android:name=".activity.ThanhToan_final" />
         <activity android:name=".activity.ThanhToan" />
         <activity android:name=".activity.GioHang" />
+        <activity android:name=".activity.KhachHang" />
+        <activity android:name=".activity.KhachHang_CTHD" />
         <activity android:name=".activity.ChiTietSanPham" />
         <activity android:name=".activity.LienHeActivity" />
         <activity android:name=".activity.SoMiNamActivity" />
